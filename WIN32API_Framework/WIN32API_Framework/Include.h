@@ -9,3 +9,4 @@
 
 
 #include "Define.h"
+#include "Structs.h"
