@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="MainUpdate.h" />
@@ -151,6 +153,8 @@
     <ClInclude Include="WIN32API_Framework.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Player.cpp" />

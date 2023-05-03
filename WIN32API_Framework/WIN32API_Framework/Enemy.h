@@ -1,10 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
-class Player : public GameObject
+class Enemy : public GameObject
 {
-private:
-	GameObject* BulletList[BULLETCOUNT];
 public:
 	virtual void Start()override;
 	virtual void Start(Vector3 _position)override
@@ -15,9 +13,7 @@ public:
 	virtual void Render(HDC hdc)override;
 	virtual void Destroy()override;
 public:
-	GameObject* CreateBullet();
-public:
-	Player();
-	virtual ~Player();
+	Enemy();
+	virtual ~Enemy();
 };
 

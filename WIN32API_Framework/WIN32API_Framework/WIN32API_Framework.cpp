@@ -3,7 +3,6 @@
 
 #include "framework.h"
 #include "WIN32API_Framework.h"
-#include "Include.h"
 #include "MainUpdate.h"
 
 
@@ -64,7 +63,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            if (Time< GetTickCount64())
+            if (Time < GetTickCount64())
             {
                 Time = GetTickCount64();
 
@@ -133,7 +132,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 
    HWND hWnd = g_hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, WIDTH, HEIGHT, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
