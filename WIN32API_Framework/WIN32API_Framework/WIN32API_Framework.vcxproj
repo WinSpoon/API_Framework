@@ -140,14 +140,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WIN32API_Framework.h" />
@@ -155,9 +163,15 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="WIN32API_Framework.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +180,9 @@
   <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="WIN32API_Framework.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

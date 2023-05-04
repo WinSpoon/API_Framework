@@ -4,7 +4,7 @@
 class Enemy : public GameObject
 {
 public:
-	virtual void Start()override;
+	virtual GameObject* Start()override;
 	virtual void Start(Vector3 _position)override
 	{
 

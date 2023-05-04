@@ -34,6 +34,30 @@
     <Filter Include="소스 파일\01. GameObject\Enemy">
       <UniqueIdentifier>{7c5b14e4-721f-49d2-bca8-dab98c2edd82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager">
+      <UniqueIdentifier>{fd51637a-ce1b-4b9b-b185-6b8f3b70231f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\ObjectManager">
+      <UniqueIdentifier>{520c4271-ef74-4ef1-a0f7-8ca947924a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\CollisionManager">
+      <UniqueIdentifier>{06e09dca-e1d1-4ced-aa7e-558fe840f010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\SceneManager">
+      <UniqueIdentifier>{1173ef2f-e1ed-46a1-b77e-cf3182d2753c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{ebd93711-df23-441f-a2cb-9fa6fb0de481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Logo">
+      <UniqueIdentifier>{9ef93c45-9992-4a84-9547-52afc77602b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Menu">
+      <UniqueIdentifier>{dea2f2a9-57e5-4cda-8e93-6e4ae2fdedb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Stage">
+      <UniqueIdentifier>{9b3623c2-5d59-4941-aec4-55a131344c65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -72,6 +96,30 @@
     <ClInclude Include="Enemy.h">
       <Filter>소스 파일\01. GameObject\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>소스 파일\99. Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>소스 파일\99. Manager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32API_Framework.cpp">
@@ -92,6 +140,24 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>소스 파일\01. GameObject\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>소스 파일\99. Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WIN32API_Framework.rc">
@@ -105,5 +171,8 @@
     <Image Include="WIN32API_Framework.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

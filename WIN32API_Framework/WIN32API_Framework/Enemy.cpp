@@ -8,7 +8,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::Start()
+GameObject* Enemy::Start()
 {
 	srand((unsigned int)GetTickCount64());
 	transform.position = Vector3(WIDTH + 75.0f, float(rand() % (HEIGHT - 150) + 75), 0.0f);
@@ -16,6 +16,9 @@ void Enemy::Start()
 	transform.scale = Vector3(150.0f, 150.0f, 0.0f);
 
 	Speed = 0.5f;
+	Key = "Enemy";
+
+	return this;
 }
 
 int Enemy::Update()
@@ -26,6 +29,7 @@ int Enemy::Update()
 		return 2;
 
 	return 0;
+
 }
 
 void Enemy::Render(HDC hdc)
