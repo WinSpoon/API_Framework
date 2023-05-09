@@ -1,12 +1,14 @@
 #include "Logo.h"
 #include "SceneManager.h"
 
+
 Logo::Logo()
 {
 }
 
 Logo::~Logo()
 {
+	Destroy();
 }
 
 void Logo::Start()

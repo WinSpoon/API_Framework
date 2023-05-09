@@ -1,8 +1,11 @@
 #pragma once
 #include "Scene.h"
 
+class GameObject;
 class Logo : public Scene
 {
+private:
+	GameObject* obj;
 public:
 	virtual void Start()override;
 	virtual int Update()override;

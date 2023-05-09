@@ -5,7 +5,6 @@
 class CollisionManager
 {
 public:
-	
 	// ** 구(동그라미) 충돌
 	static bool CircleCollision(GameObject* temp, GameObject* dest)
 	{
