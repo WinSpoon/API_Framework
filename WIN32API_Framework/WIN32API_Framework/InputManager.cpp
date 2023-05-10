@@ -1,6 +1,6 @@
 #include "InputManager.h"
 
-InputManager* InputManager::Instance = nullptr;
+//InputManager* InputManager::Instance = nullptr;
 
 
 InputManager::InputManager() : inputKey(0)

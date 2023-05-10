@@ -17,7 +17,8 @@ void Menu::Start()
 
 int Menu::Update()
 {
-	DWORD dwKey = InputManager::GetInstance()->GetKey();
+	//DWORD dwKey = InputManager::GetInstance()->GetKey();
+	DWORD dwKey = GetSingle(InputManager)->GetKey();
 
 	if (dwKey & KEYID_RETURN)
 	{

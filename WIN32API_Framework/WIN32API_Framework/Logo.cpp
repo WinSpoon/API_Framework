@@ -19,8 +19,9 @@ void Logo::Start()
 
 int Logo::Update()
 {
-	DWORD dwKey = InputManager::GetInstance()->GetKey();
-
+	//DWORD dwKey = InputManager::GetInstance()->GetKey();
+	DWORD dwKey = GetSingle(InputManager)->GetKey();
+	
 	if (dwKey & KEYID_RETURN)
 	{
 		Sleep(100);

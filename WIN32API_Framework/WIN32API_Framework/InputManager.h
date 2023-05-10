@@ -3,6 +3,9 @@
 
 class InputManager
 {
+public:
+	Single(InputManager)
+		/*
 private:
 	static InputManager* Instance;
 
@@ -13,6 +16,7 @@ public:
 			Instance = new InputManager;
 		return Instance;
 	}
+		*/
 private:
 	DWORD inputKey;
 public:

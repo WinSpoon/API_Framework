@@ -23,7 +23,9 @@ void MainUpdate::Start()
 
 void MainUpdate::Update()
 {
-	InputManager::GetInstance()->CheckKey();
+	GetSingle(InputManager)->CheckKey();
+	//InputManager::GetInstance()->CheckKey();
+
 	SceneManager::GetInstance()->Update();
 }
 

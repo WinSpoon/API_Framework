@@ -24,17 +24,17 @@ const unsigned char STATEID_ATTACK = 0x00000002;
 const unsigned char STATEID_JUMP = 0x00000004;
 
 
-
-
 #define Single(T)					\
 public:								\
-	static T& GetInstance()			\
+	static T** GetInstance()		\
 	{								\
-		static T instance;			\
-		return instance;			\
+		static T* instance;			\
+		if(instance == nullptr)		\
+			instance = new T;		\
+		return &instance;			\
 	}								\
 private:							\
 	T(const T&) = delete;			\
 	T& operator=(const T&) = delete;
 
-#define GetSingle(T) (T::GetInstance())
+#define GetSingle(T) (*T::GetInstance())
