@@ -8,11 +8,62 @@ typedef struct tagNode
 	int value;
 }NODE;
 
-
 NODE* List;
+int Length;
 
 
-void Push(int value);
+void push(int value)
+{
+	NODE* nextNode = List;
+
+	while (nextNode->next != nullptr)
+		nextNode = nextNode->next;
+
+	//** create
+	nextNode->next = new NODE;
+
+	//** initialize
+	nextNode->next->next = nullptr;
+	nextNode->next->value = value;
+
+	++Length;
+}
+
+
+void insert(int count, int value)
+{
+	// ** 리스트에 담긴 총 원소의 개수보다 count의 값이 크다면
+	// ** 값을 추가할 수 없으므로 종료.
+	if (Length < count)
+		return;
+
+	// ** 리스트를 들고옴.
+	NODE* nextNode = List;
+
+	// ** 카운트의 값 만큼 다음 노드로 이동.
+	while (0 < count)
+	{
+		--count;
+
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+	}
+	// ** 이동이 끝났다면 새로운 노드를 추가.
+
+	// ** 새로운 노드 생성
+	NODE* newNode = new NODE;
+	newNode->next = nullptr;
+	newNode->value = value;
+	
+	// ** 다음 노드를 임시의 저장소에 저장.
+	NODE* tempNode = nextNode->next;
+
+	// ** 다음노드를 저장하는 저장소에 새로운 노드를 배치.
+	nextNode->next = newNode;
+
+	// ** 새로운 노드가 가르키는 다음노드를 임시공간에 있던 노드로 배치
+	newNode->next = tempNode;
+}
 
 
 int main(void)
@@ -26,37 +77,17 @@ int main(void)
 	List->value = 0;
 
 	//===========================================
-	// ** 두번째 노드
-	// create
-	List->next = new NODE;
-
-	// initialize
-	List->next->next = nullptr;
-	List->next->value = 10;
 	
-	//===========================================
-	// ** 세번째 노드
-	// create
-	List->next->next = new NODE;
+	push(10);
+	push(20);
+	push(30);
+	push(40);
 
-	// initialize
-	List->next->next->next = nullptr;
-	List->next->next->value = 20;
-
-	//===========================================
-	// ** 네번째 노드
-	// create
-	List->next->next->next = new NODE;
-
-	// initialize
-	List->next->next->next->next = nullptr;
-	List->next->next->next->value = 30;
-
+	insert(2, 25);
 
 
 	// ** 두번째 노드를 nextNode 에 넘겨준다.
 	NODE* nextNode = List->next;
-
 
 	// ** nextNode가 nullptr이 아니라면 반복.
 	while (nextNode != nullptr)
@@ -67,20 +98,7 @@ int main(void)
 		// ** 다음노드로 이동
 		nextNode = nextNode->next;
 	}
-	
+
 
 	return 0;
-}
-
-void Push(int value)
-{
-	NODE* nextNode = List;
-
-	while (nextNode)
-		nextNode = nextNode->next;
-
-	nextNode = new NODE;
-
-	nextNode->value = value;
-	nextNode->next = nullptr;
 }
