@@ -9,23 +9,21 @@ typedef struct tagNode
 }NODE;
 
 NODE* List;
+NODE* End;
 int Length;
 
 
 void push(int value)
 {
-	NODE* nextNode = List;
-
-	while (nextNode->next != nullptr)
-		nextNode = nextNode->next;
-
 	//** create
-	nextNode->next = new NODE;
+	NODE* node = new NODE;
 
 	//** initialize
-	nextNode->next->next = nullptr;
-	nextNode->next->value = value;
-
+	node->next = nullptr;
+	node->value = value;
+	
+	End->next = node;
+	End = node;
 	++Length;
 }
 
@@ -65,9 +63,80 @@ void insert(int count, int value)
 	newNode->next = tempNode;
 }
 
+void remove(int count)
+{
+	// ** 리스트에 담긴 총 원소의 개수보다 count의 값이 크다면
+	// ** 값을 추가할 수 없으므로 종료.
+	if (Length < count)
+		return;
+
+	// ** 리스트를 들고옴.
+	NODE* nextNode = List;
+
+	// ** 카운트의 값 만큼 다음 노드로 이동.
+	while (0 < count)
+	{
+		--count;
+
+		// ** 다음노드로 이동
+		nextNode = nextNode->next;
+	}
+
+	// ** 다 다음 노드를 임시의 저장소에 저장.
+	NODE* tempNode = nextNode->next->next;
+
+	// ** 다음 노드를 삭제.
+	delete nextNode->next;
+	nextNode->next = nullptr;
+
+	// ** 삭제된 공간에 임시저장했던 노드를 셋팅.
+	nextNode->next = tempNode;
+}
+
+
 
 int main(void)
 {
+	/*
+	int i = 10;
+	int* n = &i;
+
+	cout << i << endl;
+	cout << *n << endl;
+
+	cout << &i << endl;
+	cout << n << endl;
+
+	*n = 20;
+
+	cout << i << endl;
+	*/
+
+
+
+	/*
+	{
+		{
+			NODE* node = nullptr;
+
+			{
+				NODE* tempNode = new NODE;
+
+				tempNode->next = nullptr;
+				tempNode->value = 10;
+
+				node = tempNode;
+
+				cout << tempNode << endl;
+			}
+			cout << node << endl;
+			//cout << node->value << endl;
+		}
+	}
+	*/
+
+
+
 	// ** 첫번째 노드
 	// create
 	List = new NODE; 
@@ -76,6 +145,7 @@ int main(void)
 	List->next = nullptr;
 	List->value = 0;
 
+	End = List;
 	//===========================================
 	
 	push(10);
@@ -84,6 +154,7 @@ int main(void)
 	push(40);
 
 	insert(2, 25);
+	remove(2);
 
 
 	// ** 두번째 노드를 nextNode 에 넘겨준다.
