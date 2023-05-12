@@ -8,6 +8,7 @@ typedef struct tagNode
 	int value;
 }NODE;
 
+
 NODE* List;
 NODE* End;
 int Length;
@@ -97,46 +98,6 @@ void remove(int count)
 
 int main(void)
 {
-	/*
-	int i = 10;
-	int* n = &i;
-
-	cout << i << endl;
-	cout << *n << endl;
-
-	cout << &i << endl;
-	cout << n << endl;
-
-	*n = 20;
-
-	cout << i << endl;
-	*/
-
-
-
-	/*
-	{
-		{
-			NODE* node = nullptr;
-
-			{
-				NODE* tempNode = new NODE;
-
-				tempNode->next = nullptr;
-				tempNode->value = 10;
-
-				node = tempNode;
-
-				cout << tempNode << endl;
-			}
-			cout << node << endl;
-			//cout << node->value << endl;
-		}
-	}
-	*/
-
-
-
 	// ** 첫번째 노드
 	// create
 	List = new NODE; 
