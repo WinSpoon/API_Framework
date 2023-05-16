@@ -8,11 +8,9 @@ typedef struct tagNode
 	int value;
 }NODE;
 
-
 NODE* List;
 NODE* End;
 int Length;
-
 
 void push(int value)
 {
@@ -95,6 +93,35 @@ void remove(int count)
 }
 
 
+void pop()
+{
+	if (Length < 1)
+		return;
+	else if (Length < 2)
+	{
+		delete List->next;
+		List->next = nullptr;
+		End = List;
+	}
+	else
+	{
+		// ** 리스트를 들고옴.
+		NODE* nextNode = List;
+
+		while (nextNode->next->next != nullptr)
+		{
+			// ** 다음노드로 이동.
+			nextNode = nextNode->next;
+		}
+
+		End = nextNode;
+		delete nextNode->next;
+		nextNode->next = nullptr;
+	}
+	--Length;
+}
+
+
 
 int main(void)
 {
@@ -113,10 +140,14 @@ int main(void)
 	push(20);
 	push(30);
 	push(40);
-
+	
 	insert(2, 25);
 	remove(2);
 
+	pop();
+
+	push(100);
+	push(200);
 
 	// ** 두번째 노드를 nextNode 에 넘겨준다.
 	NODE* nextNode = List->next;
@@ -130,7 +161,6 @@ int main(void)
 		// ** 다음노드로 이동
 		nextNode = nextNode->next;
 	}
-
 
 	return 0;
 }
