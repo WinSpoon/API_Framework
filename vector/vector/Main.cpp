@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
+
 
 int* Numbers = nullptr;
 int Length = 0;
@@ -19,7 +21,7 @@ void push(int n)
 
 	for (int i = 0; i < Length; ++i)
 		Temp[i] = Numbers[i];
-	
+
 	Temp[Length] = n;
 	Numbers = Temp;
 	++Length;
@@ -36,8 +38,21 @@ int main(void)
 
 	for (int i = 0; i < Length; ++i)
 	{
-		cout << Numbers[i] << endl;
+		//cout << Numbers[i] << endl;
 	}
+
+
+
+	vector<int> vecList;
+
+	for (int i = 0; i < 5; ++i)
+	{
+		vecList.push_back(i * 10 + 10);
+
+		cout << vecList[i] << endl;
+		cout << vecList.capacity() << endl << endl;
+	}
+
 
 	return 0;
 }
