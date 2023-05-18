@@ -4,54 +4,53 @@
 using namespace std;
 
 
-int* Numbers = nullptr;
-int Length = 0;
+int* Numbers;
+int Size;
+int Capacity;
 
-void push(int n)
+
+void pop_back()
 {
-	if (Numbers == nullptr)
+	if (Size != 0)
+		--Size;
+}
+
+void push_back(int _value)
+{
+	if (Size == Capacity)
 	{
-		Numbers = new int;
-		*Numbers = n;
-		++Length;
-		return;
+		int Length = int(Capacity * 0.5f);
+		Capacity += Length < 1 ? 1 : Length;
 	}
 
-	int* Temp = new int[Length + 1];
+	int* temp = new int[Capacity];
 
-	for (int i = 0; i < Length; ++i)
-		Temp[i] = Numbers[i];
+	for (int i = 0; i < Size; ++i)
+		temp[i] = Numbers[i];
 
-	Temp[Length] = n;
-	Numbers = Temp;
-	++Length;
+	delete Numbers;
+	Numbers = nullptr;
+
+	Numbers = temp;
+
+	Numbers[Size] = _value;
+
+	++Size;
 }
 
 
 int main(void)
 {
-	push(10);
-	push(20);
-	push(30);
-	push(40);
-	push(50);
-
-	for (int i = 0; i < Length; ++i)
+	for (int i = 0; i < 10; ++i)
 	{
-		//cout << Numbers[i] << endl;
+		push_back(i * 10 + 10);
+		cout << "size : " << Size << endl;
+		cout << "capacity : " << Capacity << endl << endl;
 	}
 
-
-
-	vector<int> vecList;
-
-	for (int i = 0; i < 5; ++i)
-	{
-		vecList.push_back(i * 10 + 10);
-
-		cout << vecList[i] << endl;
-		cout << vecList.capacity() << endl << endl;
-	}
+	for (int i = 0; i < 10; ++i)
+		cout << Numbers[i] << endl;
+	return 0;
 
 
 	return 0;
