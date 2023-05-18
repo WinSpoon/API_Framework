@@ -12,6 +12,18 @@ NODE* List;
 NODE* End;
 int Length;
 
+
+
+NODE* begin()
+{
+	return List->next;
+}
+
+NODE* end()
+{
+	return End->next;
+}
+
 void push(int value)
 {
 	//** create
