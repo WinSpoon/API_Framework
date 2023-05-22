@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "ObjectManager.h"
 #include "InputManager.h"
+#include "Protptype.h"
 
 
 Player::Player()
@@ -64,10 +65,15 @@ void Player::Destroy()
 
 GameObject* Player::CreateBullet()
 {
-	GameObject* bullet = new Bullet;
+	GameObject* ProtoObj = GetSingle(Protptype)->GetGameObject("Bullet");
 	
-	bullet->Start();
-	bullet->SetPosition(transform.position);
-	
-	return bullet;
+	if (ProtoObj != nullptr)
+	{
+		GameObject* Object = ProtoObj->Clone();
+		Object->Start();
+		Object->SetPosition(transform.position);
+		return Object;
+	}
+	else
+		return nullptr;
 }

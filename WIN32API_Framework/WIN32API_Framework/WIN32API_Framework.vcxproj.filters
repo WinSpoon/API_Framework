@@ -61,6 +61,9 @@
     <Filter Include="소스 파일\99. Manager\InputManager">
       <UniqueIdentifier>{cfb9b6b7-1317-4f7f-ae6e-677338ce29c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\98. Pattern">
+      <UniqueIdentifier>{7191656f-6932-4e84-bb8e-1bd811b0f9f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -126,6 +129,9 @@
     <ClInclude Include="InputManager.h">
       <Filter>소스 파일\99. Manager\InputManager</Filter>
     </ClInclude>
+    <ClInclude Include="Protptype.h">
+      <Filter>소스 파일\98. Pattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32API_Framework.cpp">
@@ -166,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Protptype.cpp">
+      <Filter>소스 파일\98. Pattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
