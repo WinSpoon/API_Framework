@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "ObjectPool.h"
 
 Bullet::Bullet()
 {
@@ -43,4 +44,5 @@ void Bullet::Render(HDC hdc)
 
 void Bullet::Destroy()
 {
+	GetSingle(ObjectPool)->ReturnObject(this);
 }
