@@ -139,19 +139,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletBridge.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GuideBullet.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="NormalBullet.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Protptype.h" />
     <ClInclude Include="Resource.h" />
@@ -165,12 +170,15 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GuideBullet.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="NormalBullet.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Protptype.cpp" />
     <ClCompile Include="Scene.cpp" />

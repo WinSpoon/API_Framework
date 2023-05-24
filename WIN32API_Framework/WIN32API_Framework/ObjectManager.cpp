@@ -51,3 +51,16 @@ list<GameObject*>* ObjectManager::GetObjectList(const string& key)
 		// ** second = value = list<GameObject*> ¸¦ ¹ÝÈ¯.
 		return &iter->second;
 }
+
+void ObjectManager::Render(HDC _hdc)
+{
+	for (map<string, list<GameObject*>>::iterator iter = ObjectList.begin();
+		iter != ObjectList.end(); ++iter)
+	{
+		for (list<GameObject*>::iterator iter2 = iter->second.begin();
+			iter2 != iter->second.end(); ++iter2)
+		{
+			(*iter2)->Render(_hdc);
+		}
+	}
+}

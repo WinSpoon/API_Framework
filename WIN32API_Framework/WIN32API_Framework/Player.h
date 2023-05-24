@@ -11,6 +11,7 @@ public:
 public:
 	virtual GameObject* Clone()override { return new Player(*this); }
 public:
+	template <typename T>
 	GameObject* CreateBullet();
 public:
 	Player();

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
+
 class Bullet : public GameObject
 {
 public:
@@ -11,7 +12,7 @@ public:
 public:
 	virtual GameObject* Clone()override { return new Bullet(*this); }
 public:
-	Bullet();
+	Bullet() ;
 	Bullet(Transform _transform) : GameObject(_transform) {}
 	virtual ~Bullet();
 };

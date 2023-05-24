@@ -20,6 +20,7 @@ public:
 	void AddObject(GameObject* _Object);
 
 	list<GameObject*>* GetObjectList(const string& key);
+	void Render(HDC _hdc);
 private:
 	ObjectManager();
 public:

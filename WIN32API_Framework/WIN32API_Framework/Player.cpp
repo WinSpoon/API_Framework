@@ -4,6 +4,9 @@
 #include "InputManager.h"
 #include "Protptype.h"
 
+#include "NormalBullet.h"
+#include "GuideBullet.h"
+
 
 Player::Player()
 {
@@ -28,7 +31,7 @@ GameObject* Player::Start()
 
 int Player::Update()
 {
-	//DWORD dwKey = InputManager::GetInstance()->GetKey(); 
+	//DWORD dwKey = InputManager::GetInstance()->GetKey();
 	DWORD dwKey = GetSingle(InputManager)->GetKey();
 
 	if (dwKey & KEYID_UP)
@@ -44,7 +47,11 @@ int Player::Update()
 		transform.position.x += Speed;
 
 	if (dwKey & KEYID_SPACE)
-		ObjectManager::GetInstance()->AddObject( CreateBullet() );
+		ObjectManager::GetInstance()->AddObject( CreateBullet<NormalBullet>() );
+
+	if (dwKey & KEYID_CONTROL)
+		ObjectManager::GetInstance()->AddObject(CreateBullet<GuideBullet>());
+	
 
 	return 0;
 }
@@ -63,8 +70,14 @@ void Player::Destroy()
 
 }
 
+
+ template <typename T>
 GameObject* Player::CreateBullet()
 {
+	Bridge* pBridge = new T;
+	pBridge->Start();
+	((BulletBridge*)pBridge)->SetTarget(this);
+
 	GameObject* ProtoObj = GetSingle(Protptype)->GetGameObject("Bullet");
 	
 	if (ProtoObj != nullptr)
@@ -72,6 +85,10 @@ GameObject* Player::CreateBullet()
 		GameObject* Object = ProtoObj->Clone();
 		Object->Start();
 		Object->SetPosition(transform.position);
+
+		pBridge->SetObject(Object);
+		Object->SetBridge(pBridge);
+
 		return Object;
 	}
 	else
