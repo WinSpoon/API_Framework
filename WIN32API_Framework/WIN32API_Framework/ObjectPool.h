@@ -23,7 +23,7 @@ public:
 	{
 		list<GameObject*>* tempList = GetList(_key);
 
-		if (tempList == nullptr)
+		if (tempList == nullptr || tempList->empty())
 			return nullptr;
 
 		GameObject* Obj = tempList->front();

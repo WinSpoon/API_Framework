@@ -11,8 +11,6 @@ protected:
 
 	Bridge* pBridge;
 public:
-	//virtual void Start()PURE;
-	//virtual GameObject* Create()PURE;
 	virtual GameObject* Start()PURE;
 	virtual int Update()PURE;
 	virtual void Render(HDC hdc)PURE;

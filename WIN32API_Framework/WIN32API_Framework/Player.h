@@ -12,7 +12,7 @@ public:
 	virtual GameObject* Clone()override { return new Player(*this); }
 public:
 	template <typename T>
-	GameObject* CreateBullet();
+	GameObject* CreateBullet(string _Key);
 public:
 	Player();
 	Player(Transform _transform) : GameObject(_transform) {}

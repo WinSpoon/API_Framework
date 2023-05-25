@@ -27,7 +27,10 @@ void Protptype::Start()
 	key = "Enemy";
 	ProtptypeObject.insert(make_pair(key, (new Enemy(transform))->Start()->SetKey(key)));
 
-	key = "Bullet";
+	key = "NormalBullet";
+	ProtptypeObject.insert(make_pair(key, (new Bullet(transform))->Start()->SetKey(key)));
+
+	key = "GuideBullet";
 	ProtptypeObject.insert(make_pair(key, (new Bullet(transform))->Start()->SetKey(key)));
 }
 

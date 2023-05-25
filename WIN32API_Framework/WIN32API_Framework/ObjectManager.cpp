@@ -1,5 +1,6 @@
 #include "ObjectManager.h"
 #include "GameObject.h"
+//#include "ObjectPool.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -50,6 +51,28 @@ list<GameObject*>* ObjectManager::GetObjectList(const string& key)
 	else
 		// ** second = value = list<GameObject*> ¸¦ ¹ÝÈ¯.
 		return &iter->second;
+}
+
+void ObjectManager::Update()
+{
+	for (map<string, list<GameObject*>>::iterator iter = ObjectList.begin();
+		iter != ObjectList.end(); ++iter)
+	{
+		for (list<GameObject*>::iterator iter2 = iter->second.begin();
+			iter2 != iter->second.end(); )
+		{
+			int result = (*iter2)->Update();
+
+			if (result == 1)
+			{
+				//GetSingle(ObjectPool)->ReturnObject((*iter2));
+				(*iter2)->Destroy();
+				iter2 = iter->second.erase(iter2);
+			}
+			else
+				++iter2;
+		}
+	}
 }
 
 void ObjectManager::Render(HDC _hdc)
