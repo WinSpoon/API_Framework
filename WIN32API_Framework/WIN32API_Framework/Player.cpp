@@ -72,14 +72,6 @@ void Player::Render(HDC hdc)
 		(int)transform.scale.x, 			// 출력할 이미지의 크기 만큼 X
 		(int)transform.scale.y,			// 출력할 이미지의 크기 만큼 Y
 		RGB(255, 0, 255));		// 해당 색상을 제외
-
-	/*
-	Rectangle(hdc,
-		int(transform.position.x - (transform.scale.x * 0.5f)),
-		int(transform.position.y - (transform.scale.y * 0.5f)),
-		int(transform.position.x + (transform.scale.x * 0.5f)),
-		int(transform.position.y + (transform.scale.y * 0.5f)));
-	*/
 }
 
 void Player::Destroy()
