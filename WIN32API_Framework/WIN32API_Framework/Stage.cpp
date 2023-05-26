@@ -4,8 +4,9 @@
 #include "ObjectManager.h"
 #include "ObjectPool.h"
 #include "Protptype.h"
+#include "ImageManager.h"
+#include "Bitmap.h"
 
-#include <tchar.h>
 
 Stage::Stage() : m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
 {
@@ -44,6 +45,16 @@ void Stage::Start()
 	}
 
 	EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
+
+
+	map<string, Bitmap*>* m_mapImageList = GetSingle(ImageManager)->GetImageList();
+
+
+	m_mapImageList->insert(
+		make_pair("BackGround", (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp")));
+
+
+	GameObject::SetImageList(m_mapImageList);
 }
 
 int Stage::Update()
@@ -62,6 +73,15 @@ void Stage::Render(HDC hdc)
 		m_pPlayer->Render(hdc);
 
 	ObjectManager::GetInstance()->Render(hdc);
+
+
+
+
+	
+
+
+
+
 
 #ifdef DEBUG
 	list<GameObject*>* enemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
@@ -93,6 +113,13 @@ void Stage::Render(HDC hdc)
 		// ** Ãâ·Â
 		TextOut(hdc, 50, 50, (LPCWSTR)t, (int)str.size());
 	}
+
+	/*
+	Graphics graphics(hdc);
+	Image image(L"../Resource/Stage/BackGround.png");
+	graphics.DrawImage(&image, 0, 0);
+	*/
+
 
 	if (normalList != nullptr && !normalList->empty())
 	{
