@@ -50,6 +50,8 @@ void Stage::Start()
 
 	(*m_mapImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp");
 	(*m_mapImageList)["Buffer"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Buffer.bmp");
+	(*m_mapImageList)["PlayerR"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player.bmp");
+	(*m_mapImageList)["PlayerL"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player_L.bmp");
 
 	GameObject::SetImageList(m_mapImageList);
 }
@@ -72,14 +74,14 @@ void Stage::Render(HDC hdc)
 		0, 0,				// 스케일을 잡아준다.
 		SRCCOPY);			// 소스 영역을 대상 영역에 복사한다.
 
-	if (m_pPlayer)
-		m_pPlayer->Render(
-			(*m_mapImageList)["Buffer"]->GetMemDC());
 
 	ObjectManager::GetInstance()->Render(
 		(*m_mapImageList)["Buffer"]->GetMemDC());
 
 	
+	if (m_pPlayer)
+		m_pPlayer->Render(
+			(*m_mapImageList)["Buffer"]->GetMemDC());
 
 	BitBlt(hdc,			// 복사해 넣을 그림판 ?!
 		0, 0, WIDTH, HEIGHT,		// 복사할 영역 시작점으로부터 끝부분까지
