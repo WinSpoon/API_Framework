@@ -1,12 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <Windows.h>
+#include <vector>
 
 using namespace std;
 
 // ** 타일 가로, 세로 최대 개수
-#define COUNT_X 7
-#define COUNT_Y 4
+#define COUNT_X 5
+#define COUNT_Y 5
 
 #define BLACK		0
 #define DARKBLUE	1
@@ -26,6 +27,12 @@ using namespace std;
 #define WHITE		15
 
 
+void SetCorsorPosition(const float& _x, const float& _y);
+void SetColor(const int& _color);
+void Text(const float& _x, const float& _y, const string& _str);
+
+
+
 typedef struct tagVector3
 {
 	float x, y;
@@ -37,25 +44,75 @@ typedef struct tagVector3
 
 
 
-void SetCorsorPosition(const float& _x, const float& _y);
-void SetColor(int color);
-void Text(const float& _x, const float& _y, const string& _str);
+typedef struct tagTile
+{
+	Vector3 position[3];
+	string tile[3];
+	int option;
 
+	void Render()
+	{
+		for (int i = 0; i < 3; ++i)
+			Text(position[i].x, position[i].y, tile[i]);
+	}
+
+	tagTile() : option(0) {}
+
+}Tile;
+
+
+typedef struct tagInfo
+{
+	Vector3 position;
+	string tile;
+	int option;
+
+	tagInfo() : option(0) {}
+
+}Info;
+
+
+// ** 타일 크기
+const Vector3 scale(6, 3);
 
 
 int main(void)
 {
 	// ** 타일 위치
-	Vector3 position;
-	position.x = 3;
-	position.y = 2;
+	vector<Tile*> TileList;
 
+	int x = 0;
+	int y = 0;
 
-	// ** 타일 크기
-	Vector3 scale;
-	scale.x = 6;
-	scale.y = 3;
+	for (int i = 0; i < COUNT_Y * COUNT_X; ++i)
+	{
+		Tile* tile = new Tile;
 
+		tile->tile[0] = "┌─┐";
+		tile->position[0] = Vector3(x * scale.x, y * scale.y);
+
+		tile->tile[1] = "│　│";
+		tile->position[1] = Vector3(x * scale.x, y * scale.y + 1);
+
+		tile->tile[2] = "└─┘";
+		tile->position[2] = Vector3(x * scale.x, y * scale.y + 2);
+
+		x++;
+
+		if (x == 5)
+		{
+			x = 0;
+			y++;
+		}
+
+		TileList.push_back(tile);
+	}
+
+	// ** Target
+	Info Cursur;
+		   
+	Cursur.position = Vector3(15.0f, 8.0f);
+	Cursur.option = 0;
 
 
 	ULONGLONG time = GetTickCount64();
@@ -69,47 +126,22 @@ int main(void)
 			// ** 화면 청소
 			system("cls");
 
-			for (int y = 0; y < COUNT_Y; ++y)
-			{
-				for (int x = 0; x < COUNT_X; ++x)
-				{
-					SetColor(7);
 
-					// ** 타일 출력
-					Text(position.x - (scale.x * 0.5f) + scale.x * x,
-						position.y - (scale.y * 0.5f) + scale.y * y,
-						"┌─┐");
+			int X = Cursur.position.x / scale.x;
+			int Y = Cursur.position.y / scale.y;
 
-					Text(position.x - (scale.x * 0.5f) + scale.x * x,
-						position.y - (scale.y * 0.5f) + scale.y * y + 1,
-						"│　│");
-
-					Text(position.x - (scale.x * 0.5f) + scale.x * x,
-						position.y - (scale.y * 0.5f) + scale.y * y + 2,
-						"└─┘");
+			int index = Y * COUNT_Y + X;
 
 
-					// ** index 확인.
-					int index = y * COUNT_X + x;
+			for (vector<Tile*>::iterator iter = TileList.begin(); iter != TileList.end(); ++iter)
+				(*iter)->Render();
 
-					char* buffer = new char[4];
-					_itoa(index, buffer, 10);
-
-					SetColor(12);
-
-					Text(position.x - 1 + scale.x * x,
-						position.y - (scale.y * 0.5f) + scale.y * y + 1,
-						string(buffer));
-
-				}
-			}
 
 			// ** CPU가 연산을 하지 않는 상태.
 			Sleep(50);
 		}
 	}
 	
-
 	SetColor(7);
 
 	return 0;
@@ -124,7 +156,7 @@ void SetCorsorPosition(const float& _x, const float& _y)
 		GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
-void SetColor(int _color)
+void SetColor(const int& _color)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -132,7 +164,7 @@ void SetColor(int _color)
 		handle, _color);
 }
 
-void Text(const float& _x, const float& _y, const string& _str)
+void Text(const float& _x, const float& _y, const string& _str) 
 {
 	SetCorsorPosition(_x, _y);
 	cout << _str << endl;
