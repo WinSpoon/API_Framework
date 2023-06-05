@@ -4,9 +4,9 @@
 class Tile : public Object
 {
 private:
-	int check;
-	Vector3 position;
-	Vector3 scale;
+	int hor;
+	int ver;
+	
 public:
 	virtual void Start()override;
 	virtual void Update()override;

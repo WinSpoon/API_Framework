@@ -1,7 +1,9 @@
 #include "Tile.h"
+#include "Bitmap.h"
 
-Tile::Tile() : check(0)
+Tile::Tile() : hor(0), ver(0)
 {
+	
 }
 
 Tile::~Tile()
@@ -11,10 +13,11 @@ Tile::~Tile()
 
 void Tile::Start()
 {
-	check = 0;
+	position = Vector3(0.0f, 0.0f);
+	scale = Vector3(SCALE_X, SCALE_Y);
 
-	position = Vector3(100.0f, 100.0f);
-	scale = Vector3(100.0f, 100.0f);
+	hor = 0;
+	ver = 0;
 }
 
 void Tile::Update()
@@ -25,47 +28,39 @@ void Tile::Update()
 
 	ScreenToClient(g_hWnd, &ptMouse);
 
-	if (check)
+	if (position.x - (scale.x * 0.5f) < ptMouse.x &&
+		position.y - (scale.y * 0.5f) < ptMouse.y &&
+		ptMouse.x < position.x + (scale.x * 0.5f) &&
+		ptMouse.y < position.y + (scale.y * 0.5f))
 	{
-		if (position.x - (scale.x * 0.5f) < ptMouse.x &&
-			position.y - (scale.y * 0.5f) < ptMouse.y &&
-			ptMouse.x < position.x + (scale.x * 0.5f) &&
-			ptMouse.y < position.y + (scale.y * 0.5f))
+		if (GetAsyncKeyState(VK_LBUTTON))
 		{
-			if (GetAsyncKeyState(VK_LBUTTON))
+			++hor;
+
+			if (hor >= 4)
 			{
-				check = !check;
+				hor = 0;
+				ver = !ver;
 			}
 		}
 	}
-	else
-	{
 
-	}
-
-	if (GetAsyncKeyState(VK_RETURN))
-	{
-		check = !check;
-		Sleep(80);
-	}
 }
 
 void Tile::Render(HDC _hdc)
 {
-	if (check)
-		Rectangle(_hdc,
-			int(position.x - (scale.x * 0.5f)),
-			int(position.y - (scale.y * 0.5f)),
-			int(position.x + (scale.x * 0.5f)),
-			int(position.y + (scale.y * 0.5f)));
-	else 
-		Ellipse(_hdc, 
-			int(position.x - (scale.x * 0.5f)),
-			int(position.y - (scale.y * 0.5f)),
-			int(position.x + (scale.x * 0.5f)),
-			int(position.y + (scale.y * 0.5f)));
+	TransparentBlt(_hdc,
+		int(position.x - (scale.x * 0.5f)),
+		int(position.y - (scale.y * 0.5f)),		
+		(int)scale.x, (int)scale.y,
+		(*ImageList)["Tile"]->GetMemDC(),
+		int(scale.x * hor),
+		int(scale.x * ver),
+		(int)scale.x, (int)scale.y,
+		RGB(255, 0, 255));
 }
 
 void Tile::Destroy()
 {
+
 }

@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="ImageManager.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="Object.h" />
@@ -151,6 +153,8 @@
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Picking.cpp" />
