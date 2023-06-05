@@ -22,7 +22,7 @@ void Tile::Start()
 	ver = 0;
 }
 
-void Tile::Update()
+int Tile::Update()
 {
 	POINT ptMouse;
 
@@ -39,8 +39,8 @@ void Tile::Update()
 		{
 			hor = Option;
 
-			if (hor >= 9)
-				hor = 0;
+			if (hor >= 10)
+				return 1;// ** Áö·Ú.
 
 			Sleep(80);
 		}
@@ -50,6 +50,8 @@ void Tile::Update()
 	{
 		hor = Option;
 	}
+
+	return 0;
 }
 
 void Tile::Render(HDC _hdc)

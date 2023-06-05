@@ -8,6 +8,7 @@ class Stage
 private:
 	map<string, Bitmap*> ImageList;
 	vector<Object*> TileList;
+	int Result;
 public:
 	void Start();
 	void Update();
