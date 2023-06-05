@@ -49,7 +49,7 @@ private:							\
 
 
 // ** 타일 최대 개수
-const int MAX = COUNT_X * COUNT_Y;
+const int MAX = int(COUNT_X * COUNT_Y);
 
 
 extern HWND g_hWnd;
